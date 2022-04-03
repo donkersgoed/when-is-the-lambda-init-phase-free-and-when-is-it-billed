@@ -190,12 +190,12 @@ class Tests(cdk.Construct):
             architecture=lambda_.Architecture.ARM_64,
         )
         # Result:
-        # REPORT RequestId: d77efa0f-df9c-4a3c-98b7-f04cde2c354b
-        # Duration: 1002.54 ms
-        # BilledDuration: 1003 ms
+        # REPORT RequestId: 43563f23-7568-4eaa-8f63-62580a6810c9
+        # Duration: 1001.86 ms
+        # Billed Duration: 1002 ms
         # Memory Size: 128 MB
         # Max Memory Used: 36 MB
-        # InitDuration: 1101.84 ms
+        # Init Duration: 1096.78 ms
 
         ##################
         # 10 SECOND RUNS #
