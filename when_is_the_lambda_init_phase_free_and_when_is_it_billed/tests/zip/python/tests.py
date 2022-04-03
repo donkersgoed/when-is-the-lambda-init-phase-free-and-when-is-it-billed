@@ -115,6 +115,30 @@ class Tests(cdk.Construct):
         # Max Memory Used: 36 MB
         # InitDuration: 1101.84 ms
 
+        # Result:
+        #### PYTHON_3_9 x86 with Extension
+        extension_layer = lambda_.LayerVersion(
+            scope=self,
+            id="ZipPython39ExtensionInit1SecondLayer",
+            code=lambda_.Code.from_asset("lambda/extensions/python_sleep"),
+        )
+
+        lambda_.Function(
+            scope=self,
+            id="ZipPython39ExtensionInit1Second",
+            code=lambda_.Code.from_asset("lambda/functions/base_python"),
+            memory_size=128,
+            timeout=cdk.Duration.minutes(1),
+            environment={
+                "INIT_SLEEP": "1",
+                "HANDLER_SLEEP": "1",
+            },
+            runtime=lambda_.Runtime.PYTHON_3_9,
+            handler="main.handler",
+            layers=[extension_layer],
+        )
+        # Result:
+
         #### PYTHON_3_9 arm64
         lambda_.Function(
             scope=self,
