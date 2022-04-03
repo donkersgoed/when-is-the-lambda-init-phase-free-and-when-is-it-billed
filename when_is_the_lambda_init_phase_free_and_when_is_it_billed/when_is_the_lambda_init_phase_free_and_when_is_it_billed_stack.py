@@ -36,7 +36,5 @@ class WhenIsTheLambdaInitPhaseFreeAndWhenIsItBilledStack(cdk.Stack):
         ZipNodeJsTests(scope=self, construct_id="ZipNodeJsTests")
         ZipPythonTests(scope=self, construct_id="ZipPythonTests")
         ZipRubyTests(scope=self, construct_id="ZipRubyTests")
-        # ZipJavaTests(scope=self, construct_id="ZipJavaTests")
         ZipGoTests(scope=self, construct_id="ZipGoTests")
-        # ZipDotNetTests(scope=self, construct_id="ZipDotNetTests")
         ZipRustTests(scope=self, construct_id="ZipRustTests")
