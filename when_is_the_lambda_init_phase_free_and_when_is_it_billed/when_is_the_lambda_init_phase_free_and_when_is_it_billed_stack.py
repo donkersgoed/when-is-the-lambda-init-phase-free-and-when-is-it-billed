@@ -9,8 +9,10 @@ from aws_cdk import core as cdk
 # Local application/library specific imports
 from tests.docker.nodejs.tests import Tests as DockerNodeJsTests
 from tests.docker.python.tests import Tests as DockerPythonTests
-from tests.zip.managed_runtimes.nodejs.tests import Tests as ZipNodeJsTests
-from tests.zip.managed_runtimes.python.tests import Tests as ZipPythonTests
+from tests.zip.nodejs.tests import Tests as ZipNodeJsTests
+from tests.zip.python.tests import Tests as ZipPythonTests
+from tests.zip.go.tests import Tests as ZipGoTests
+from tests.zip.rust.tests import Tests as ZipRustTests
 
 
 class WhenIsTheLambdaInitPhaseFreeAndWhenIsItBilledStack(cdk.Stack):
@@ -34,6 +36,6 @@ class WhenIsTheLambdaInitPhaseFreeAndWhenIsItBilledStack(cdk.Stack):
         ZipPythonTests(scope=self, construct_id="ZipPythonTests")
         # ZipRubyTests(scope=self, construct_id="ZipRubyTests")
         # ZipJavaTests(scope=self, construct_id="ZipJavaTests")
-        # ZipGoTests(scope=self, construct_id="ZipGoTests")
+        ZipGoTests(scope=self, construct_id="ZipGoTests")
         # ZipDotNetTests(scope=self, construct_id="ZipDotNetTests")
-        # ZipCustomRuntimeTests(scope=self, construct_id="ZipCustomRuntimeTests")
+        ZipRustTests(scope=self, construct_id="ZipRustTests")
