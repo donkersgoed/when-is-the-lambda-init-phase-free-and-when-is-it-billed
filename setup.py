@@ -16,6 +16,7 @@ setuptools.setup(
     packages=setuptools.find_packages(where="when_is_the_lambda_init_phase_free_and_when_is_it_billed"),
     install_requires=[
         "aws-cdk.core==1.149.0",
+        "aws-cdk.aws-lambda==1.149.0",
         "black==21.6b0",
         "pylint==2.10.2",
         "python-dotenv==0.17.0",
