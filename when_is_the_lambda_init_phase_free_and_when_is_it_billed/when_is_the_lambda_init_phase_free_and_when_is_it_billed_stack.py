@@ -11,6 +11,7 @@ from tests.docker.nodejs.tests import Tests as DockerNodeJsTests
 from tests.docker.python.tests import Tests as DockerPythonTests
 from tests.zip.nodejs.tests import Tests as ZipNodeJsTests
 from tests.zip.python.tests import Tests as ZipPythonTests
+from tests.zip.ruby.tests import Tests as ZipRubyTests
 from tests.zip.go.tests import Tests as ZipGoTests
 from tests.zip.rust.tests import Tests as ZipRustTests
 
@@ -34,7 +35,7 @@ class WhenIsTheLambdaInitPhaseFreeAndWhenIsItBilledStack(cdk.Stack):
         ## ZIP TESTS
         ZipNodeJsTests(scope=self, construct_id="ZipNodeJsTests")
         ZipPythonTests(scope=self, construct_id="ZipPythonTests")
-        # ZipRubyTests(scope=self, construct_id="ZipRubyTests")
+        ZipRubyTests(scope=self, construct_id="ZipRubyTests")
         # ZipJavaTests(scope=self, construct_id="ZipJavaTests")
         ZipGoTests(scope=self, construct_id="ZipGoTests")
         # ZipDotNetTests(scope=self, construct_id="ZipDotNetTests")
