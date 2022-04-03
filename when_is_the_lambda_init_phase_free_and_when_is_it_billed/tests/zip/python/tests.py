@@ -115,17 +115,46 @@ class Tests(cdk.Construct):
         # Max Memory Used: 36 MB
         # InitDuration: 1101.84 ms
 
-        # Result:
-        #### PYTHON_3_9 x86 with Extension
+        #### PYTHON_3_9 x86 with Internal Extension
         extension_layer = lambda_.LayerVersion(
             scope=self,
-            id="ZipPython39ExtensionInit1SecondLayer",
-            code=lambda_.Code.from_asset("lambda/extensions/python_sleep"),
+            id="ZipPython39InternalExtensionInit1SecondLayer",
+            code=lambda_.Code.from_asset("lambda/extensions/python_internal"),
         )
 
         lambda_.Function(
             scope=self,
-            id="ZipPython39ExtensionInit1Second",
+            id="ZipPython39InternalExtensionInit1Second",
+            code=lambda_.Code.from_asset("lambda/functions/base_python"),
+            memory_size=128,
+            timeout=cdk.Duration.minutes(1),
+            environment={
+                "INIT_SLEEP": "1",
+                "HANDLER_SLEEP": "1",
+                "AWS_LAMBDA_EXEC_WRAPPER": "/opt/sleepwrapper",
+            },
+            runtime=lambda_.Runtime.PYTHON_3_9,
+            handler="main.handler",
+            layers=[extension_layer],
+        )
+        # Result:
+        # REPORT RequestId: 6897f517-31db-4bf0-8fd9-5abd2863dee5
+        # Duration: 1001.82 ms
+        # Billed Duration: 1002 ms
+        # Memory Size: 128 MB
+        # Max Memory Used: 37 MB
+        # Init Duration: 2124.46 ms
+
+        #### PYTHON_3_9 x86 with External Extension
+        extension_layer = lambda_.LayerVersion(
+            scope=self,
+            id="ZipPython39ExternalExtensionInit1SecondLayer",
+            code=lambda_.Code.from_asset("lambda/extensions/python_external"),
+        )
+
+        lambda_.Function(
+            scope=self,
+            id="ZipPython39ExternalExtensionInit1Second",
             code=lambda_.Code.from_asset("lambda/functions/base_python"),
             memory_size=128,
             timeout=cdk.Duration.minutes(1),
@@ -138,6 +167,12 @@ class Tests(cdk.Construct):
             layers=[extension_layer],
         )
         # Result:
+        # REPORT RequestId: e7e42165-fee9-4017-b19f-a7a28129cb8c
+        # Duration: 1002.16 ms
+        # Billed Duration: 1003 ms
+        # Memory Size: 128 MB
+        # Max Memory Used: 60 MB
+        # Init Duration: 2509.05 ms
 
         #### PYTHON_3_9 arm64
         lambda_.Function(

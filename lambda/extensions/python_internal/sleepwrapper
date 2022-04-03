@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# the path to the interpreter and all of the originally intended arguments
+args=("$@")
+
+echo "starting sleep"
+sleep 1
+echo "sleep done"
+
+# start the runtime with the extra options
+exec "${args[@]}"
