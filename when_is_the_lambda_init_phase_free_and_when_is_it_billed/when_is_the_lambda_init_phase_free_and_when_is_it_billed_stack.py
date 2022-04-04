@@ -14,6 +14,7 @@ from tests.zip.python.tests import Tests as ZipPythonTests
 from tests.zip.ruby.tests import Tests as ZipRubyTests
 from tests.zip.go.tests import Tests as ZipGoTests
 from tests.zip.rust.tests import Tests as ZipRustTests
+from tests.speed.go.tests import Tests as GoSpeedTests
 
 
 class WhenIsTheLambdaInitPhaseFreeAndWhenIsItBilledStack(cdk.Stack):
@@ -38,3 +39,6 @@ class WhenIsTheLambdaInitPhaseFreeAndWhenIsItBilledStack(cdk.Stack):
         ZipRubyTests(scope=self, construct_id="ZipRubyTests")
         ZipGoTests(scope=self, construct_id="ZipGoTests")
         ZipRustTests(scope=self, construct_id="ZipRustTests")
+
+        ## SPEED TESTS
+        GoSpeedTests(scope=self, construct_id="GoSpeedTests")

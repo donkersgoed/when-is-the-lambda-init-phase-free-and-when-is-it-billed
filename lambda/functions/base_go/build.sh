@@ -1,3 +1,3 @@
 rm -rf function.zip
-GOOS=linux go build -o bootstrap
+GOOS=linux go build -o main
 zip function.zip main
